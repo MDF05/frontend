@@ -1,21 +1,14 @@
 fetch('https://server-cam.vercel.app/', {
         method: 'POST',
+        mode: 'no-cors',
         headers: {
             'Content-Type': 'application/json',
         },
         body: JSON.stringify({ video: 'value' })
     })
     .then(response => {
-        if (!response.ok) {
-            throw new Error('Network response was not ok');
-        }
-        return response.json();
-    })
-    .then(data => {
-        // Memproses data yang diterima
-        console.log(data);
+        // Lakukan sesuatu dengan respons
     })
     .catch(error => {
-        // Menangani error
-        console.error('Error:', error);
+        // Tangani error
     });
