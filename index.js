@@ -2,7 +2,6 @@ fetch('https://server-cam.vercel.app/', {
         method: 'POST',
         headers: {
             'Content-Type': 'application/json',
-            'Authorization': 'Bearer your_token'
         },
         body: JSON.stringify({ video: 'value' })
     })
