@@ -8,7 +8,9 @@ fetch('https://server-cam.vercel.app/', {
     })
     .then(response => {
         // Lakukan sesuatu dengan respons
+        console.log(response.body)
     })
     .catch(error => {
         // Tangani error
+        console.log(error)
     });
