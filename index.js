@@ -1,15 +1,18 @@
-fetch('https://server-cam.vercel.app/data', {
-        method: 'POST',
-        mode: 'no-cors',
-        headers: {
-            'Content-Type': 'application/json',
-        },
-        body: JSON.stringify({ video: 'value' })
-    })
-    .then(response => response.json())
-    .then(response => console.log(response))
+// const data = { video: 'random dari index dava' }
 
-.catch(error => {
-    // Tangani error
-    console.log(error)
-});
+// fetch("https://server-cam.vercel.app/data", {
+//         method: 'POST',
+//         headers: {
+//             'Content-Type': 'application/json' // Tipe konten yang dikirimkan
+//         },
+//         body: JSON.stringify(data) // Data yang dikirim dalam bentuk JSON
+//     })
+//     .then(response => response.json()) // Mengonversi respons ke JSON
+//     .then(data => {
+//         // Menggunakan data respons
+//         console.log(data);
+//     })
+//     .catch(error => {
+//         // Menangani kesalahan
+//         console.error('Error:', error);
+//     });
