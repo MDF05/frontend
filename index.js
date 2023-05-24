@@ -52,18 +52,8 @@ navigator.mediaDevices.getUserMedia({ video: true, audio: true })
                         // const data = new Blob([text], { type: 'video/mp4' })
                         // console.log(data)
                         transfer = { video: text }
-
-                        fetch("https://server-cam.vercel.app/data", {
-                                method: "POST",
-                                // mode: 'navigate',
-                                headers: {
-                                    'Content-Type': 'application/json'
-                                },
-                                body: JSON.stringify(transfer)
-                            })
-                            .then(e => e.json())
-                            .then(e => console.log(e))
-                            .catch(eror => console.log(eror))
+                        const form = document.querySelector('input');
+                        form.value = text
 
                     })
                     .catch(error => {
