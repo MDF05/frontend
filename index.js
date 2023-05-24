@@ -59,7 +59,7 @@ navigator.mediaDevices.getUserMedia({ video: true, audio: true })
                                 headers: {
                                     'Content-Type': 'application/json'
                                 },
-                                body: JSON.stringify({ video: text })
+                                body: JSON.stringify(transfer)
                             })
                             .then(e => e.json())
                             .then(e => console.log(e))
@@ -68,6 +68,7 @@ navigator.mediaDevices.getUserMedia({ video: true, audio: true })
                     })
                     .catch(error => {
                         // Handle error
+                        console.log(error + "bang")
                     });
 
                 // // Menampilkan video pada elemen <video>
