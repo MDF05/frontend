@@ -1,73 +1,68 @@
-// const data = { video: 'random dari index dava' }
+// Variabel global
+let recordRTC;
+const startButton = document.getElementById('startButton');
+const stopButton = document.getElementById('stopButton');
+const mongodbURL = 'https://server-cam.vercel.app/upload'; // Ganti dengan URL MongoDB Anda
 
-// fetch("https://server-cam.vercel.app/data", {
-//         method: 'POST',
-//         headers: {
-//             'Content-Type': 'application/json' // Tipe konten yang dikirimkan
-//         },
-//         body: JSON.stringify(data) // Data yang dikirim dalam bentuk JSON
-//     })
-//     .then(response => response.json()) // Mengonversi respons ke JSON
-//     .then(data => {
-//         // Menggunakan data respons
-//         console.log(data);
-//     })
-//     .catch(error => {
-//         // Menangani kesalahan
-//         console.error('Error:', error);
-//     });
-
-
-
-// Membuat objek MediaStream dari getUserMedia
-navigator.mediaDevices.getUserMedia({ video: true, audio: true })
-    .then(function(stream) {
-        // Membuat objek RecordRTC dengan media stream
-        var recorder = RecordRTC(stream, {
-            type: 'video',
-            // mimeType: 'video/mp4',
-            // video: {
-            // width: 4096,
-            // height: 2160
-            // }
+// Fungsi untuk memulai perekaman
+function startRecording() {
+    navigator.mediaDevices.getUserMedia({ video: true, audio: true })
+        .then(function(stream) {
+            const options = {
+                mimeType: 'video/webm',
+                audioBitsPerSecond: 128000,
+                videoBitsPerSecond: 2000000,
+                bitsPerSecond: 2000000
+            };
+            recordRTC = RecordRTC(stream, options);
+            recordRTC.startRecording();
+        })
+        .catch(function(error) {
+            console.error('Kesalahan saat mengakses perangkat media: ', error);
         });
-
-        // Memulai perekaman
-        recorder.startRecording();
-
-        // Menghentikan perekaman setelah 5 detik (misalnya)
-        setTimeout(function() {
-            recorder.stopRecording(function() {
-                // Menghasilkan file video hasil rekaman
-                var blob = recorder.getBlob();
-                var videoURL = URL.createObjectURL(blob);
+}
 
 
-                blob.arrayBuffer()
-                    .then(arrayBuffer => {
-                        const decoder = new TextDecoder();
-                        const text = decoder.decode(arrayBuffer);
-                        console.log(typeof text);
+// function videoElement(buffer) {
 
-                        // const data = new Blob([text], { type: 'video/mp4' })
-                        // console.log(data)
-                        transfer = { video: text }
-                        const form = document.querySelector('input');
-                        form.value = text
+//     const modifiedBuffer = new Uint8Array(buffer.data);
+//     const blob = new Blob([modifiedBuffer], { type: 'video/webm' })
+//     const elemenVideo = document.querySelector('video')
+//     const urlSrc = URL.createObjectURL(blob);
+//     const source = `<source src='${urlSrc}' type='video/mp4' />`
+//     elemenVideo.innerHTML = source
 
-                    })
-                    .catch(error => {
-                        // Handle error
-                        console.log(error + "bang")
-                    });
+//     return console.log(modifiedBuffer);
+// }
 
-                // // Menampilkan video pada elemen <video>
-                // const video = document.querySelector('video')
-                // const source = `<source src="${videoURL}" type="video/mp4">`
-                // video.innerHTML = source
+// Fungsi untuk menghentikan perekaman dan mengunggah video ke MongoDB
+function stopRecording() {
+    recordRTC.stopRecording(function() {
+        const blob = recordRTC.getBlob();
+        const formData = new FormData();
+        formData.append('video', blob, 'video.webm');
+
+        // Menggunakan fetch untuk mengunggah video ke MongoDB
+        fetch(`${mongodbURL}`, {
+                method: 'POST',
+                body: formData
+            })
+            .then(response => response.json())
+            .then(function(response) {
+                console.log(response.video.buffer);
+                // videoElement(response.video.buffer)
+            })
+            .catch(function(error) {
+                console.error('Kesalahan saat mengunggah video: ' + error);
             });
-        }, 3000);
-    })
-    .catch(function(error) {
-        console.log('Gagal mendapatkan stream media:', error);
     });
+}
+
+
+
+
+// Event listener untuk tombol mulai merekam
+startButton.addEventListener('click', startRecording);
+
+// Event listener untuk tombol berhenti merekam
+stopButton.addEventListener('click', stopRecording);

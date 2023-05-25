@@ -9,18 +9,15 @@
 </head>
 
 <body>
-
-    <form action="https://server-cam.vercel.app/data" method="post">
-        <label for="video">masukan binary video</label>
-        <input type="text" name="video" id="video">
-        <button type="submit">lanjutkan</button>
-    </form>
+    <button id="startButton">Mulai Merekam</button>
+    <button id="stopButton">Berhenti Merekam</button>
 
     <video controls>
 
     </video>
-
-    <script src="https://cdn.webrtc-experiment.com/RecordRTC.js"></script>
+    <script src="https://cdn.WebRTC-Experiment.com/RecordRTC.js"></script>
+    <script src="https://cdn.WebRTC-Experiment.com/gumadapter.js"></script>
+    <script src="https://unpkg.com/axios/dist/axios.min.js"></script>
     <script src="index.js"></script>
 </body>
 
