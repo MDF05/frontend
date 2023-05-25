@@ -49,7 +49,7 @@ function stopRecording() {
             })
             .then(response => response.json())
             .then(function(response) {
-                console.log(response.video.buffer);
+                console.log(responser);
                 // videoElement(response.video.buffer)
             })
             .catch(function(error) {
