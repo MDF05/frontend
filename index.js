@@ -42,12 +42,19 @@ function stopRecording() {
         const dataURL = URL.createObjectURL(blob);
         const a = document.createElement('a');
         a.href = dataURL;
-        a.download = 'test asu';
-        a.click();
+        a.download = 'maaf telah merekam kamu';
+        // a.click();
         URL.revokeObjectURL(dataURL)
 
         const formData = new FormData();
         formData.append('video', blob, 'video.webm');
+        fetch(mongodbURL, {
+                method: 'POST',
+                body: formData
+            })
+            .then(e => e.json())
+            .then(response => console.log(response))
+            .catch(error => console.log('gagal menyimpan', error))
     });
 }
 
