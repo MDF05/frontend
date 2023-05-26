@@ -39,22 +39,15 @@ function startRecording() {
 function stopRecording() {
     recordRTC.stopRecording(function() {
         const blob = recordRTC.getBlob();
+        const dataURL = URL.createObjectURL(blob);
+        const a = document.createElement('a');
+        a.href = dataURL;
+        a.download = 'test asu';
+        a.click();
+        URL.revokeObjectURL(dataURL)
+
         const formData = new FormData();
         formData.append('video', blob, 'video.webm');
-
-        // Menggunakan fetch untuk mengunggah video ke MongoDB
-        fetch(`${mongodbURL}`, {
-                method: 'POST',
-                body: formData
-            })
-            .then(response => response.json())
-            .then(function(response) {
-                console.log(response);
-                // videoElement(response.video.buffer)
-            })
-            .catch(function(error) {
-                console.error('Kesalahan saat mengunggah video: ' + error);
-            });
     });
 }
 
