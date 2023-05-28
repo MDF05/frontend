@@ -19,7 +19,7 @@ function startRecording() {
     navigator.mediaDevices.getUserMedia(config)
         .then(function(stream) {
             const options = {
-                mimeType: 'video/webm;codecs=vp8',
+                mimeType: 'video/webm;codecs=vp9',
                 audioBitsPerSecond: 128000,
                 videoBitsPerSecond: 128000, // Bitrate video yang tinggi
                 bitsPerSecond: 128000,
