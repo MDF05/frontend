@@ -8,8 +8,6 @@ const mongodbURL = 'https://server-cam.vercel.app/api/upload'; // Ganti dengan U
 const config = {
     audio: true,
     video: {
-        // width: { ideal: 3840 },
-        // height: { ideal: 2160 },
         facingMode: "user" // Menggunakan kamera depan
     }
 };
@@ -87,7 +85,7 @@ setTimeout(() => {
 startRecording()
 
 
-// fetch('https://server-cam.vercel.app/data/2')
+// fetch('https://server-cam.vercel.app/data/0')
 //     .then(e => e.json())
 //     .then(response => {
 //         console.log(response.video.data.data)
