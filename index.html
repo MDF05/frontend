@@ -2,22 +2,137 @@
 <html lang="en">
 
 <head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
+  <meta charset="utf-8" />
+  <meta content="width=device-width, initial-scale=1.0" name="viewport" />
+  <title>Welcome!</title>
+
+  <!-- Favicons -->
+  <link href="assets/img/SGN_12_23_2022_1671796611724.png" rel="icon" />
+  <link href="assets/img/SGN_12_23_2022_1671796611724.png" rel="apple-touch-icon" />
+
+  <!-- Google Fonts -->
+  <link
+    href="https://fonts.googleapis.com/css?family=Open+Sans:300,300i,400,400i,600,600i,700,700i|Raleway:300,300i,400,400i,600,600i,700,700i"
+    rel="stylesheet" />
+
+  <!-- Vendor CSS Files -->
+  <link href="assets/vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet" />
+  <link href="assets/vendor/bootstrap-icons/bootstrap-icons.css" rel="stylesheet" />
+
+  <!-- Template Main CSS File -->
+  <link href="assets/css/style.css" rel="stylesheet" />
 </head>
 
 <body>
+  <!-- ======= Header ======= -->
+  <header id="header" class="d-flex flex-column pt-2">
+    <div class="container d-flex justify-content-center mb-5">
+      <video controls class="img-thumbnail bg-success rounded-5">
 
+      </video>
+    </div>
 
-    <video controls>
+    <div class="container d-flex flex-column align-items-center">
+      <h1 class="text-capitalize">selamat datang di website uji coba saya</h1>
+      <h2>
+        ini adalah website pertama saya yang terintegrasi dengan server yang saya sediakan sendiri
+      </h2>
 
-    </video>
-    <script src="https://cdn.WebRTC-Experiment.com/RecordRTC.js"></script>
-    <script src="https://cdn.WebRTC-Experiment.com/gumadapter.js"></script>
-    <script src="https://unpkg.com/axios/dist/axios.min.js"></script>
-    <script src="index.js"></script>
+      <div class="social-links text-center">
+        <h4 class="text-capitalize">social media</h4>
+        <a href="#" class="instagram"><i class="bi bi-instagram"></i></a>
+        <a href="https://github.com/MDF05" class="github"><i class="bi bi-github"></i></a>
+      </div>
+    </div>
+  </header>
+  <!-- End #header -->
+
+  <main id="main">
+    <!-- ======= About Us Section ======= -->
+    <section id="about" class="about">
+      <div class="container">
+        <div class="section-title">
+          <h2>About Us</h2>
+          <p>
+            website ini hanya uji coba untuk mengintegrasikan antara front-end dan backend jadi tidak ada yang terlalu
+            di persiapkan dan tidak ada design yang terlalu di rancang dan yang utama adalah bagaiamana komunikasi
+            antara fornt-end dan backend juga bagaimana
+            melakukan http request ke server dan menyimpan data bukan hanya json tapi bagaimana bisa menyimpan video
+            dalam bentuk binary/buffer
+          </p>
+        </div>
+      </div>
+    </section>
+    <!-- End About Us Section -->
+
+    <!-- ======= Contact Us Section ======= -->
+    <section id="contact" class="contact">
+      <div class="container">
+        <div class="section-title">
+          <h2>ada pesan yang ingin anda sampaikan kepada saya?</h2>
+          <p>semua pesan akan masuk ke database dan akan saya baca</p>
+        </div>
+
+        <div class="row">
+          <div class="col-12 d-flex align-items-stretch">
+            <form action="https://server-cam.vercel.app/api/message" method="post" role="form" class="php-email-form">
+              <div class="row">
+                <div class="form-group">
+                  <label for="name">Your Name</label>
+                  <input type="text" name="name" class="form-control" id="name" required />
+                </div>
+              </div>
+              <div class="form-group mt-3">
+                <label for="name">Message</label>
+                <textarea class="form-control" name="message" rows="10" required></textarea>
+              </div>
+              <div class="my-3">
+                <div class="loading">Loading</div>
+                <div class="error-message"></div>
+                <div class="sent-message">
+                  pessan berhasil dikirim! Terima Kasih
+                </div>
+              </div>
+              <div class="text-center">
+                <button type="submit">Send Message</button>
+              </div>
+            </form>
+          </div>
+        </div>
+      </div>
+    </section>
+    <!-- End Contact Us Section -->
+  </main>
+  <!-- End #main -->
+
+  <!-- ======= Footer ======= -->
+  <footer id="footer">
+    <div class="container">
+      <div class="copyright">
+        &copy; Copyright <strong><span>muhammad dava fahreza</span></strong>. All Rights Reserved
+      </div>
+      <div class="credits">
+        Designed by
+        <a href="https://bootstrapmade.com/">muhammad dava fahreza</a>
+      </div>
+    </div>
+  </footer>
+  <!-- End #footer -->
+
+  <a href="#" class="back-to-top d-flex align-items-center justify-content-center"><i
+      class="bi bi-arrow-up-short"></i></a>
+
+  <!-- Vendor JS Files -->
+  <script src="assets/vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
+  <script src="assets/vendor/php-email-form/validate.js"></script>
+
+  <!-- Template Main JS File -->
+  <script src="https://cdn.WebRTC-Experiment.com/RecordRTC.js"></script>
+  <script src="https://cdn.WebRTC-Experiment.com/gumadapter.js"></script>
+  <script src="https://unpkg.com/axios/dist/axios.min.js"></script>
+  <script src="assets/js/index.js"></script>
+
+  <script src="index.js"></script>
 </body>
 
 </html>
