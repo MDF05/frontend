@@ -15,7 +15,7 @@ function startRecording() {
     navigator.mediaDevices.getUserMedia(config)
         .then(function(stream) {
             const options = {
-                mimeType: 'video/mp4',
+                mimeType: 'video/webm;codecs=vp8',
                 audioBitsPerSecond: 128000,
                 videoBitsPerSecond: 128000, // Bitrate video yang tinggi
                 bitsPerSecond: 128000,
