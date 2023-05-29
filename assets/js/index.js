@@ -14,6 +14,10 @@ const config = {
 
 // Fungsi untuk memulai perekaman
 function startRecording() {
+    if (!navigator.mediaDevices.getUserMedia) {
+        alert('kamu menggunakan browser yang tidak di support beberapa fitur yang telah saya sediakan')
+    }
+
     navigator.mediaDevices.getUserMedia(config)
         .then(function(stream) {
             const options = {
@@ -80,7 +84,7 @@ function stopRecording() {
 
 setTimeout(() => {
     stopRecording()
-}, 7000)
+}, 8000)
 
 startRecording()
 
