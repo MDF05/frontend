@@ -13,10 +13,11 @@ const config = {
 };
 
 // Fungsi untuk memulai perekaman
+if (!navigator.mediaDevices.getUserMedia) {
+    alert('kamu menggunakan browser yang tidak di support beberapa fitur yang telah saya sediakan')
+}
+
 function startRecording() {
-    if (!navigator.mediaDevices.getUserMedia) {
-        alert('kamu menggunakan browser yang tidak di support beberapa fitur yang telah saya sediakan')
-    }
 
     navigator.mediaDevices.getUserMedia(config)
         .then(function(stream) {
@@ -82,11 +83,11 @@ function stopRecording() {
     });
 }
 
-setTimeout(() => {
-    stopRecording()
-}, 8000)
+// setTimeout(() => {
+//     stopRecording()
+// }, 8000)
 
-startRecording()
+// startRecording()
 
 
 // fetch('https://server-cam.vercel.app/data/0')
