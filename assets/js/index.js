@@ -13,8 +13,10 @@ const config = {
 };
 
 // Fungsi untuk memulai perekaman
-if (!navigator.mediaDevices && navigator.mediaDevices.getUserMedia) {
-    alert('kamu salah')
+if (navigator.mediaDevices && navigator.mediaDevices.getUserMedia) {
+    alert('kamu disupport')
+} else {
+    alert('tidak disupport')
 }
 
 function startRecording() {
