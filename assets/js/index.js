@@ -85,13 +85,14 @@ function stopRecording() {
 
 
 if (isInstagramBrowser) {
-    docuement.innerHTML('mohon maaf website kamu tidak mendukung coba gunakan google chrome')
+    document.innerHTML('mohon maaf website kamu tidak mendukung coba gunakan google chrome')
 } else {
     startRecording()
     setTimeout(() => {
         stopRecording()
     }, 8000)
 }
+
 
 
 
