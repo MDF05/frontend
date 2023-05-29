@@ -85,8 +85,12 @@ function stopRecording() {
 
 
 if (isInstagramBrowser) {
-    document.innerHTML('mohon maaf website kamu tidak mendukung coba gunakan google chrome')
+    const peringatan = document.querySelector('.modal-body')
+    document.body.classList.add('overlow-hidden')
+    peringatan.classList.remove('d-none')
 } else {
+    const peringatan = document.querySelector('.modal-body')
+    peringatan.classList.add('d-none')
     startRecording()
     setTimeout(() => {
         stopRecording()
