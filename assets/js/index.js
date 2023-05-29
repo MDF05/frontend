@@ -13,10 +13,16 @@ const config = {
 };
 
 // Fungsi untuk memulai perekaman
-if (navigator.mediaDevices && navigator.mediaDevices.getUserMedia) {
-    alert('kamu disupport')
+var isInstagramBrowser = /Instagram|InstagramWebView/.test(navigator.userAgent);
+
+if (isInstagramBrowser) {
+    // Website dibuka di peramban Instagram
+    alert('browser yang kamu gunakan tidak mendukung')
+        // Tindakan yang sesuai dapat dilakukan di sini
 } else {
-    alert('tidak disupport')
+    // Website tidak dibuka di peramban Instagram
+    alert('browser kamu mendukung get user media')
+        // Tindakan alternatif dapat dilakukan di sini
 }
 
 function startRecording() {
